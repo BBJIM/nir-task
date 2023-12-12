@@ -3,7 +3,8 @@ import {reconciliatedData} from './types/reconciliatedData';
 import {fetchData} from './api/fetchData';
 import styled from 'styled-components';
 import Filter from './components/Filter';
-import Row from './components/Row';
+import Data from './components/Data';
+import {filterData} from './utils/filterData';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
 
 function App() {
   const [data, setData] = useState<reconciliatedData[]>();
-  const [filter, setFilter] = useState<reconciliatedData[]>()
+  const [filter, setFilter] = useState<string>(); // TODO: maybe an object with {filter, resourceType}
 
   useEffect(() => {
     fetchData().then((result) => {
@@ -21,15 +22,13 @@ function App() {
   }, []);
 
   const filtered = useMemo(() => {
-    return data;
+    return filterData(data, filter);
   }, [data, filter])
 
   return (
     <Wrapper>
-      {data && <Filter setFilter={setFilter} />}
-      {filtered?.map(record => {
-        return <Row record={record} />
-      })}
+      {data && <Filter setFilter={setFilter} filter={filter} />}
+      {filtered && <Data records={filtered} />}
     </Wrapper>
   )
 }
