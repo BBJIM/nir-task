@@ -4,7 +4,9 @@ import {resourceType} from "../types/resourceType";
 
 type Props = {setFilter: React.Dispatch<string | undefined>, filter?: string};
 
-const Button = styled.button``
+const Button = styled.button`
+    margin: 0 10px;
+`
 
 const FilterInput = ({setFilter, filter}: Props) => {
     const debounce = (func: Function, delay: number) => {
@@ -22,12 +24,12 @@ const FilterInput = ({setFilter, filter}: Props) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target;
         handleFilterChange(value);
+
     };
 
     return (
         <input
             type='text'
-            value={filter}
             onChange={handleChange}
             placeholder='Filter'
         />

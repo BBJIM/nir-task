@@ -2,19 +2,22 @@ import styled from "styled-components"
 import {reconciliatedData} from "../types/reconciliatedData"
 
 const StyledRow = styled.div`
-    border-bottom: 1px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 2px;
+    margin-bottom: 10px;
 `
 
 const Row = ({record}: {record: reconciliatedData}) => {
     console.log(record);
     return <StyledRow>
-        <div>Repository.id: {record.Repository.id}</div>
-        <div>Repository.name: {record.Repository.name}</div>
-        <div>Repository.url: {record.Repository.url}</div>
-        <div>Repository.size: {record.Repository.size}</div>
-        <div>Image.name: {record.Image.name}</div>
-        <div>Image.source: {record.Image.source}</div>
-        <div>Image.url: {record.Image.url}</div>
+        <div>Repository.id: <b>{record.Repository.id}</b></div>
+        <div>Repository.name: <b>{record.Repository.name}</b></div>
+        <div>Repository.url: <b>{record.Repository.url}</b></div>
+        <div>Repository.size: <b>{record.Repository.size}</b></div>
+        <div>Image.name: <b>{record.Image.name}</b></div>
+        <div>Image.source: <b>{record.Image.source}</b></div>
+        <div>Image.url: <b>{record.Image.url}</b></div>
     </StyledRow>
 }
 
