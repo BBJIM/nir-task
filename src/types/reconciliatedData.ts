@@ -31,8 +31,8 @@ type Image = {
 }
 
 export type reconciliatedData = {
-    Repository: Repository;
-    Image: Image;
+    Repository: Repository[];
+    Image: Image[];
 }
 
 export type RepositoryKeys = keyof Repository;
