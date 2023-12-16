@@ -1,21 +1,22 @@
-import {ImageKeys, RepositoryKeys, reconciliatedData} from "../types/reconciliatedData";
+import { reconciliatedData } from "../types/reconciliatedData";
+import { filterState } from '../types/resourceType';
 
-const keyWhitelist: (RepositoryKeys | ImageKeys)[] = ['name'];
-
-export const filterData = (records?: reconciliatedData[], filter?: string) => {
-    if (filter && records) {
-        return records.filter((record: reconciliatedData) => {
-            // Filter logic based on your requirements and the key whitelist
-            return keyWhitelist.some((key) => {
-                const lowercasedFilter = filter.toLowerCase();
-                const recordValue = record.Repository[(key as RepositoryKeys)]?.toString().toLowerCase() || '';
-                return recordValue.includes(lowercasedFilter);
-            }) || keyWhitelist.some((key) => {
-                const lowercasedFilter = filter.toLowerCase();
-                const recordValue = record.Image[key as ImageKeys]?.toString().toLowerCase() || '';
-                return recordValue.includes(lowercasedFilter);
-            });
-        });
+export const filterData = (records?: reconciliatedData, filterObject?: filterState) : reconciliatedData => {
+    if(records) {
+        const filteredRecords = {...records};
+        if (filterObject && filterObject.filter) {
+            console.log(filteredRecords, filteredRecords[filterObject.resourceType], filterObject);
+            const arr = filteredRecords[filterObject.resourceType]?.filter((record) => {
+                const keys = Object.keys(record);
+                return keys.some((key) => {
+                    const lowercasedFilter = filterObject.filter.toLowerCase();
+                    const recordValue = record[key]?.toString().toLowerCase() || '';
+                    return recordValue.includes(lowercasedFilter);
+                });
+            }) || [];
+            filteredRecords[filterObject.resourceType] = [...arr];
+        }
+        return filteredRecords;
     }
-    return records || [];
+    return {};
 }

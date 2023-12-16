@@ -1,14 +1,10 @@
-import styled from "styled-components"
-import React, {useState} from "react";
-import {resourceType} from "../types/resourceType";
+import React from "react";
+import { FilterProps, filterState } from "../types/resourceType";
+import ResourceSelect from './ResourceTypeButton';
 
-type Props = {setFilter: React.Dispatch<string | undefined>, filter?: string};
 
-const Button = styled.button`
-    margin: 0 10px;
-`
 
-const FilterInput = ({setFilter, filter}: Props) => {
+const FilterInput = ({setFilter}: FilterProps) => {
     const debounce = (func: Function, delay: number) => {
         let timeoutId: any;
         return (...args: any[]) => {
@@ -18,13 +14,12 @@ const FilterInput = ({setFilter, filter}: Props) => {
     };
 
     const handleFilterChange = debounce((value: string) => {
-        setFilter(value);
+        setFilter((prev) => ({...prev, filter: value}) as filterState);
     }, 300);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target;
         handleFilterChange(value);
-
     };
 
     return (
@@ -37,14 +32,12 @@ const FilterInput = ({setFilter, filter}: Props) => {
 };
 
 
-const Filter = React.memo(({setFilter, filter}: Props) => {
-    // TODO: what is this button
-    const [resourceTypeFilter, setResourceTypeFilter] = useState<resourceType>();
-
+const Filter = React.memo(({setFilter}: FilterProps) => {
+    
     return (
         <div>
-            <Button onClick={() => { }}>set resource type</Button>
-            <FilterInput setFilter={setFilter} filter={filter} />
+            <ResourceSelect setFilter={setFilter}/>
+            <FilterInput setFilter={setFilter} />
         </div>
     )
 })

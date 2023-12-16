@@ -1,0 +1,81 @@
+{
+  "images": [
+    {
+      "connected_repository_id": "550e8400-e29b-41d4-a716-446655440000",
+      "number_of_layers": 3,
+      "architecture": "arm",
+      "updated_date_timestamp": 1699352325,
+      "scan_id": 321,
+      "highest_severity": "low",
+      "total_findings": 1,
+      "scan_date_timestamp": 1699352325,
+      "id": "9b3dee35-aa47-40eb-8d8b-2e23bf7cbbcf",
+      "name": "my-first-image",
+      "url": "https://dockerhub.com/my-org/my-first-image",
+      "created_date_timestamp": 1699352316,
+      "source": "dockerhub"
+    },
+    {
+      "connected_repository_id": null,
+      "number_of_layers": 0,
+      "architecture": null,
+      "updated_date_timestamp": 1699352525,
+      "scan_id": 456,
+      "highest_severity": "medium",
+      "total_findings": 2,
+      "scan_date_timestamp": 1699352525,
+      "id": "1802c7b7-572c-4fab-b602-3cad7e672dbd",
+      "name": null,
+      "url": null,
+      "created_date_timestamp": 0,
+      "source": null
+    }
+  ],
+  "repositories": [
+    {
+      "last_push": "2023-01-01T12:00:00Z",
+      "size": 1234567890,
+      "connected_image_id": "9b3dee35-aa47-40eb-8d8b-2e23bf7cbbcf",
+      "updated_date_timestamp": 1699352316,
+      "scan_id": 123,
+      "highest_severity": "high",
+      "total_findings": 3,
+      "scan_date_timestamp": 1699352316,
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "name": "my-awesome-repo",
+      "url": "https://github.com/my-org/my-awesome-repo",
+      "created_date_timestamp": 1699358834,
+      "source": "github"
+    },
+    {
+      "last_push": "2023-02-02T14:00:00Z",
+      "size": 321321321,
+      "connected_image_id": null,
+      "updated_date_timestamp": 0,
+      "scan_id": 0,
+      "highest_severity": null,
+      "total_findings": 0,
+      "scan_date_timestamp": 0,
+      "id": "95076fb7-26a1-482a-9acc-e64fa62ec4a9",
+      "name": "my-second-repo",
+      "url": "https://bitbucket.com/my-org/my-second-repo",
+      "created_date_timestamp": 1699366034,
+      "source": "bitbucket"
+    },
+    {
+      "last_push": "2023-12-07T14:00:00Z",
+      "size": 0,
+      "connected_image_id": null,
+      "updated_date_timestamp": 0,
+      "scan_id": 0,
+      "highest_severity": null,
+      "total_findings": 0,
+      "scan_date_timestamp": 0,
+      "id": "c8d567c7-e634-47da-a013-8ca7604be911",
+      "name": "my-third-repo",
+      "url": "https://1234567890.dkr.ecr.us-east-1.amazonaws.com/my-third-repo:1.1",
+      "created_date_timestamp": 1699366014,
+      "source": "aws"
+    }
+  ]
+}
