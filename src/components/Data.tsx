@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {reconciliatedData} from "../types/reconciliatedData"
+import { reconciliatedData } from "../types/reconciliatedData"
 import Row from "./Row"
 import React from "react";
 
@@ -9,21 +9,20 @@ const DataWrapper = styled.div`
     gap: 40px;
 `
 
-const Data = React.memo(({records}: {records: reconciliatedData}) => {
-    const recordsKeys  = Object.keys(records);
+const Data = React.memo(({ records }: { records: reconciliatedData }) => {
+    const recordsKeys = Object.keys(records);
     return <DataWrapper>
         {recordsKeys?.map(key => {
-            // @ts-ignore
             const data = records[key];
-            // @ts-ignore
-            return <div key={key}>
-                <b>{key}</b>
-                {data.map((record: any) => {
-                    return <Row key={record.id} record={record} />
-                })}
-            </div>
+            return (
+                <div key={key}>
+                    <b>{key}</b>
+                    {data.map((record: any) => {
+                        return <Row key={record.id} record={record} />
+                    })}
+                </div>)
         })}
-        
+
     </DataWrapper>
 });
 

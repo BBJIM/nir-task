@@ -5,7 +5,6 @@ export const filterData = (records?: reconciliatedData, filterObject?: filterSta
     if(records) {
         const filteredRecords = {...records};
         if (filterObject && filterObject.filter) {
-            console.log(filteredRecords, filteredRecords[filterObject.resourceType], filterObject);
             const arr = filteredRecords[filterObject.resourceType]?.filter((record) => {
                 const keys = Object.keys(record);
                 return keys.some((key) => {

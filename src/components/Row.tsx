@@ -7,12 +7,11 @@ const StyledRow = styled.div`
     margin-bottom: 10px;
 `
 
-const Row = ({record}: {record: object}) => {
+const Row = ({ record }: { record: object }) => {
     return (
         <StyledRow>
             {Object.keys(record).map((key) => {
-                // @ts-ignore
-                return <div key={key}>{key} <b>{String(record[key])}</b></div>
+                return <div key={key}>{key} <b>{record[key]}</b></div>
             })}
         </StyledRow>
     );

@@ -4,7 +4,7 @@ import ResourceSelect from './ResourceTypeButton';
 
 
 
-const FilterInput = ({setFilter}: FilterProps) => {
+const FilterInput = ({ setFilter }: FilterProps) => {
     const debounce = (func: Function, delay: number) => {
         let timeoutId: any;
         return (...args: any[]) => {
@@ -14,11 +14,11 @@ const FilterInput = ({setFilter}: FilterProps) => {
     };
 
     const handleFilterChange = debounce((value: string) => {
-        setFilter((prev) => ({...prev, filter: value}) as filterState);
+        setFilter((prev) => ({ ...prev, filter: value }) as filterState);
     }, 300);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const {value} = event.target;
+        const { value } = event.target;
         handleFilterChange(value);
     };
 
@@ -32,11 +32,11 @@ const FilterInput = ({setFilter}: FilterProps) => {
 };
 
 
-const Filter = React.memo(({setFilter}: FilterProps) => {
-    
+const Filter = React.memo(({ setFilter }: FilterProps) => {
+
     return (
         <div>
-            <ResourceSelect setFilter={setFilter}/>
+            <ResourceSelect setFilter={setFilter} />
             <FilterInput setFilter={setFilter} />
         </div>
     )

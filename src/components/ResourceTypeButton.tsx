@@ -2,9 +2,8 @@
 import { FilterProps, ResourceType } from "../types/resourceType";
 
 const ResourceSelect = ({ setFilter }: FilterProps) => {
-  const handleChange: React.ChangeEventHandler<HTMLSelectElement> =(event) => {
-		// @ts-ignore
-    setFilter((prev) => ({...prev, resourceType: event.target.value}));
+  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    setFilter((prev) => prev ? ({ ...prev, resourceType: event.target.value }) : {});
   };
 
   return (
