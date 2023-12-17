@@ -35,6 +35,8 @@ export type reconciliatedData = {
     Image?: Image[];
 }
 
+export type Records = (Image | Repository)[];
+
 export type RepositoryKeys = keyof Repository;
 export type ImageKeys = keyof Image;
 

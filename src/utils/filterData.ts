@@ -1,21 +1,12 @@
-import { reconciliatedData } from "../types/reconciliatedData";
-import { filterState } from '../types/resourceType';
+import {Image, Repository, reconciliatedData} from "../types/reconciliatedData";
+import {filterState} from '../types/resourceType';
 
-export const filterData = (records?: reconciliatedData, filterObject?: filterState) : reconciliatedData => {
-    if(records) {
-        const filteredRecords = {...records};
-        if (filterObject && filterObject.filter) {
-            const arr = filteredRecords[filterObject.resourceType]?.filter((record) => {
-                const keys = Object.keys(record);
-                return keys.some((key) => {
-                    const lowercasedFilter = filterObject.filter.toLowerCase();
-                    const recordValue = record[key]?.toString().toLowerCase() || '';
-                    return recordValue.includes(lowercasedFilter);
-                });
-            }) || [];
-            filteredRecords[filterObject.resourceType] = [...arr];
+export const filterData = (records?: reconciliatedData, filterObject?: filterState): (Image | Repository)[] => {
+    if (records) {
+        if (filterObject && filterObject.resourceType) {
+            return records[filterObject.resourceType];
         }
-        return filteredRecords;
+        return records.Image || [];
     }
-    return {};
+    return [];
 }

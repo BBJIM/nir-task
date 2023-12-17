@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import styled from 'styled-components';
-import { fetchData } from './api/fetchData';
+import {fetchData} from './api/fetchData';
 import Data from './components/Data';
 import Filter from './components/Filter';
-import { reconciliatedData } from './types/reconciliatedData';
-import { filterState } from './types/resourceType';
-import { filterData } from './utils/filterData';
+import {reconciliatedData} from './types/reconciliatedData';
+import {ResourceType, filterState} from './types/resourceType';
+import {filterData} from './utils/filterData';
 
 const Wrapper = styled.div`
     margin: auto;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 function App() {
   const [data, setData] = useState<reconciliatedData>();
-  const [filter, setFilter] = useState<filterState>();
+  const [filter, setFilter] = useState<filterState>({resourceType: ResourceType.Image});
 
   useEffect(() => {
     fetchData().then((result) => {
